@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <title>Chronic Kidey | i-Diagnostic-Kit</title>
+    <style>
+      .bg {
+        animation: slide 3s ease-in-out infinite alternate;
+        background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+        bottom: 0;
+        left: -50%;
+        opacity: 0.5;
+        position: fixed;
+        right: -50%;
+        top: 0;
+        z-index: -1;
+      }
+
+      .bg2 {
+        animation-direction: alternate-reverse;
+        animation-duration: 4s;
+      }
+
+      .bg3 {
+        animation-duration: 5s;
+      }
+
+      h1 {
+        font-family: monospace;
+      }
+
+      @keyframes slide {
+        0% {
+          transform: translateX(-25%);
+        }
+        100% {
+          transform: translateX(25%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <!-- navbar begins -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="./index.html">i-Diagnostic-Kit</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#corosol"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About(comming soon)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#test">Test Guide(comming soon)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#info">Data Analysis(comming soon)</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- navbar ends -->
+
+    <!-- form code begins -->
+
+    <div class="container text-light">
+      <br /><br /><br />
+      <h2>CHRONIC KIDNEY TEST</h2>
+      <br />
+      <form action="{{ url_for('predict')}}" method="post">
+        <label>BP</label>
+        <br />
+        <input type="text" name="1" />
+        <br />
+        <label>SG</label>
+        <br />
+        <input type="text" name="2" />
+        <br />
+        <label>AL</label>
+        <br />
+        <input type="text" name="3" />
+        <br />
+        <label>SU</label>
+        <br />
+        <input type="text" name="4" />
+        <br />
+        <label>RBC</label>
+        <br />
+        <input type="text" name="5" />
+        <br />
+        <label>BU</label>
+        <br />
+        <input type="text" name="6" />
+        <br />
+        <label>SC</label>
+        <br />
+        <input type="text" name="7" />
+        <br />
+        <label>SOD</label>
+        <br />
+        <input type="text" name="8" />
+        <br />
+        <label>POT</label>
+        <br />
+        <input type="text" name="9" />
+        <br />
+        <label>HEMO</label>
+        <br />
+        <input type="text" name="10" />
+        <br />
+        <label>WBC</label>
+        <br />
+        <input type="text" name="11" />
+        <br />
+        <label>RBCC</label>
+        <br />
+        <input type="text" name="12" />
+        <br />
+        <label>HTN</label>
+        <br />
+        <input type="text" name="13" />
+        <br />
+        <br />
+
+        <button type="submit">Predict</button>
+      </form>
+
+      {% if prediction == 0%}
+      <h2 style="color: green">You are tested negative</h2>
+      {% else %}
+      <h2 style="color: red">You are tested positive</h2>
+      {% endif %}
+      <br />
+      <br />
+      <a href="./index.html">return main page</a>
+    </div>
+    <!-- form code ends -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
